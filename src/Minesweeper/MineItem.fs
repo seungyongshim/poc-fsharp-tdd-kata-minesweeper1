@@ -13,6 +13,7 @@ type MineItem =
     | Seven
     | Eight
 
+
 module MineItem =
     let click v =
         match v with
