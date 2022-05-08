@@ -24,17 +24,15 @@ module MineField =
         |> Seq.map (fun x -> Covered Zero)
 
     let setup v =
+        let itemsWithBomb items n =
+            items |> Seq.updateAt n (Covered Bomb)
+        
         let itemsWithBombs w h b =
-            let bombPos = randoms w h b
-            (items w h)
-            |> Seq.indexed
-            // 이부분을 map2로 수정 할 수 있을지도
-            |> Seq.map(fun (i, l) ->
-                if bombPos |> Seq.contains(i)
-                then match l with
-                     | Covered _ -> Covered Bomb
-                     | x -> Bomb
-                else l)
+            let randoms = randoms w h b  
+
+            items w h 
+            
+        
         match v with
         | Setup (w, h, b) -> Playing (w, h, (itemsWithBombs w h b))
         | x -> x
