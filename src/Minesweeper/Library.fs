@@ -1,5 +1,19 @@
 namespace Minesweeper
 
-type MineItem(NearBombsCount : int) =
-    new() = MineItem(0)
-    member this.NearBombsCount with get() = NearBombsCount
+module MineItem =
+    type MineItem =
+        | Covered of MineItem
+        | Bomb
+        | One
+        | Two
+        | Three
+        | Four
+        | Five
+        | Six
+        | Seven
+        | Eight
+
+    let mineItemToString v =
+        match v with
+        | Covered _ -> "."
+        | Three -> "3"
