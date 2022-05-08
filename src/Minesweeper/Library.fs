@@ -1,19 +1,19 @@
 namespace Minesweeper
 
-module MineItem =
-    type MineItem =
-        | Covered of MineItem
-        | Bomb
-        | One
-        | Two
-        | Three
-        | Four
-        | Five
-        | Six
-        | Seven
-        | Eight
+type MineItem =
+    | Covered of MineItem
+    | Bomb
+    | One
+    | Two
+    | Three
+    | Four
+    | Five
+    | Six
+    | Seven
+    | Eight
 
-    let mineItemToString v =
+module MineItem =
+    let ToString v =
         match v with
         | Covered _ -> "."
         | Three -> "3"
