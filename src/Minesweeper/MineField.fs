@@ -28,10 +28,10 @@ module MineField =
             items |> Seq.updateAt n (Covered Bomb)
         
         let itemsWithBombs w h b =
-            let randoms = randoms w h b  
-
-            items w h 
-            
+            let mutable ret = items w h 
+            for i in randoms w h b do
+                ret <- itemsWithBomb ret i
+            ret
         
         match v with
         | Setup (w, h, b) -> Playing (w, h, (itemsWithBombs w h b))
