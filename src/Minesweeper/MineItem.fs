@@ -13,8 +13,14 @@ type MineItem =
     | Seven
     | Eight
 
+
 module MineItem =
-    let ToString v =
+    let click v =
+        match v with
+        | Covered x -> x
+        | x -> x
+
+    let toString v =
         match v with
         | Covered _ -> "."
         | Bomb -> "*"
@@ -27,6 +33,7 @@ module MineItem =
         | Six -> "6"
         | Seven -> "7"
         | Eight -> "8"
+
     let rec add v =
         match v with
         | Covered x -> Covered (add x)
@@ -39,4 +46,5 @@ module MineItem =
         | Five -> Six
         | Six -> Seven
         | Seven -> Eight
+        | Eight -> Eight
 
