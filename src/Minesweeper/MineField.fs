@@ -28,6 +28,7 @@ module MineField =
             let bombPos = randoms w h b
             (items w h)
             |> Seq.indexed
+            // 이부분을 map2로 수정 할 수 있을지도
             |> Seq.map(fun (i, l) ->
                 if bombPos |> Seq.contains(i)
                 then match l with
